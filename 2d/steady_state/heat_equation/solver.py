@@ -43,3 +43,9 @@ def solve_thermal_problem(mesh_file, boundary_file, output_file, top_temp=100.0,
         xdmf.write(u_sol)
 
     return u_sol
+
+if __name__ == "__main__":
+    mesh_file = "mesh/mesh.xdmf"
+    boundary_file = "mesh/line.xdmf"
+    output_file = "results/thermal_problem.xdmf"
+    solve_thermal_problem(mesh_file, boundary_file, output_file, top_temp=25.0, left_temp=50.0, bottom_temp=100.0,num_segments = 6)

@@ -3,6 +3,7 @@ import json
 import meshio
 
 def create_msh(length=1.0,
+               width=0.5,
                num_segments=4,  # Number of segments for the bottom edge
                mesh_size=0.1,  # Characteristic length for mesh elements
                mesh_file = "mesh/square_mesh.msh"): 
@@ -15,8 +16,8 @@ def create_msh(length=1.0,
         i * (length / num_segments), 0, 0, mesh_size) for i in range(num_segments + 1)]
 
     # Create the remaining points
-    p_top_right = gmsh.model.geo.addPoint(length, length, 0, mesh_size)
-    p_top_left = gmsh.model.geo.addPoint(0, length, 0, mesh_size)
+    p_top_right = gmsh.model.geo.addPoint(length, width, 0, mesh_size)
+    p_top_left = gmsh.model.geo.addPoint(0, width, 0, mesh_size)
 
     # Create the bottom segmented lines
     bottom_lines = [
